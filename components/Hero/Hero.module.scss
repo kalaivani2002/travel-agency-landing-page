@@ -3,14 +3,14 @@
 .hero {
   width: 100%;
   overflow: hidden;
-  padding: 3rem 0 4rem;
+  padding: 8rem 0 4rem;
 
   @include respond-to(tablet) {
-    padding: 4rem 0 5rem;
+    padding: 10rem 0 5rem;
   }
 
   @include respond-to(fullhd) {
-    padding: 6rem 0 7rem;
+    padding: 12rem 0 7rem;
   }
 }
 
@@ -60,42 +60,50 @@
 
 .heading {
   font-family: $font-heading;
-  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 700;
-  color: $dark;
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-
-  // Underline accent on "Travel, enjoy"
-  & > :first-line {
-    text-decoration: underline;
-    text-decoration-color: $accent-red;
-    text-underline-offset: 6px;
-  }
+  color: #181E4B;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  letter-spacing: -0.04em;
 
   @include respond-to(fullhd) {
-    font-size: 4.25rem;
+    font-size: 6rem;
+  }
+}
+
+.enjoy {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0.8rem;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background: #DF6951;
+    z-index: -1;
+    transform: rotate(-1deg);
+    border-radius: 20px;
+    opacity: 0.8;
   }
 }
 
 .description {
   font-family: $font-body;
   font-size: 1rem;
-  color: $text-gray;
-  line-height: 1.8;
+  font-weight: 500;
+  color: #5E6282;
+  line-height: 1.875;
   margin-bottom: 2.5rem;
-  max-width: 420px;
+  max-width: 477px;
 
   @include respond-to(desktop) {
     margin-left: 0;
   }
-
-  // margin-left: auto;
-  // margin-right: auto;
-}
-
-.enjoy-class {
-
 }
 
 // ─── CTA Buttons ─────────────────────────────────────────
@@ -191,40 +199,29 @@
   }
 }
 
-// ─── Decorative Blob ─────────────────────────────────────
-.blob {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 85%;
-  height: 95%;
-  background: #FFF1DA;
-  border-radius: 50% 40% 60% 30% / 40% 50% 60% 50%;
-  z-index: 0;
 
-  @include respond-to(desktop) {
-    width: 78%;
-    right: -1rem;
-  }
-}
 
 // ─── Hero Image ──────────────────────────────────────────
 .heroImage {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 420px;
+  max-width: 100%;
   height: auto;
   object-fit: contain;
-  object-position: bottom;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.12));
+  display: block;
 
   @include respond-to(tablet) {
-    max-width: 480px;
+    max-width: 600px;
+  }
+
+  @include respond-to(desktop) {
+    max-width: 765px;
+    margin-top: -3rem; // pull up to overlap header area slightly
   }
 
   @include respond-to(fullhd) {
-    max-width: 560px;
+    max-width: 860px;
   }
 }
 
@@ -239,20 +236,41 @@
 }
 
 .planeTop {
-  top: 8%;
-  left: 5%;
+  top: 15%;
+  left: 0%;
+  width: 100px;
   animation: floatPlane 4s ease-in-out infinite;
+
+  @include respond-to(desktop) {
+    left: 20%;
+    top: 5%;
+    width: 140px;
+  }
 }
 
 .planeBottom {
-  top: 18%;
-  right: 2%;
+  top: 35%;
+  right: 0%;
+  width: 100px;
   animation: floatPlane 4s ease-in-out infinite 1.5s;
+
+  @include respond-to(desktop) {
+    right: -5%;
+    top: 10%;
+    width: 140px;
+  }
 }
 
 @keyframes floatPlane {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50%       { transform: translateY(-10px) rotate(3deg); }
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
 }
 
 // ─── Floating Trip Card ──────────────────────────────────
@@ -341,6 +359,13 @@
 }
 
 @keyframes floatCard {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }

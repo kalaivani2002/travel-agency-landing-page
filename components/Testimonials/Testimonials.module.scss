@@ -1,305 +1,225 @@
 @use '../../styles/variables' as *;
 
 .testimonials {
-  width: 100%;
-  padding: 5rem 0 6rem;
-  background: $white;
+  padding: 8rem 0;
   position: relative;
   overflow: hidden;
+  background: white;
 }
 
-// ─── Container ───────────────────────────────────────────
 .container {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  align-items: flex-start;
+  gap: 4rem;
 
   @include respond-to(desktop) {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 5rem;
-  }
-
-  @include respond-to(fullhd) {
-    max-width: 1600px;
-    padding: 0 2rem;
   }
 }
 
-// ─── Left ────────────────────────────────────────────────
 .left {
-  flex-shrink: 0;
-  max-width: 300px;
-  width: 100%;
+  max-width: 450px;
+  text-align: center;
 
   @include respond-to(desktop) {
-    max-width: 280px;
+    text-align: left;
     padding-top: 1rem;
   }
 }
 
 .tag {
-  font-family: $font-body;
-  font-size: 0.8rem;
+  color: $text-gray;
   font-weight: 600;
-  color: $accent-red;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .heading {
   font-family: $font-heading;
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
   color: $dark;
-  line-height: 1.25;
-  margin-bottom: 2rem;
-
-  @include respond-to(fullhd) {
-    font-size: 3rem;
-  }
+  line-height: 1.2;
+  margin-bottom: 3rem;
 }
 
-// ─── Dots ────────────────────────────────────────────────
 .dots {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
 
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba($text-gray, 0.25);
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: all 0.3s ease;
+  @include respond-to(desktop) {
+    justify-content: flex-start;
+    margin-bottom: 0;
+  }
 
-  &:hover {
-    background: rgba($primary, 0.5);
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #E5E5E5;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+
+    &.dotActive {
+      background: #39425D;
+    }
   }
 }
 
-.dotActive {
-  background: $primary;
-  width: 28px;
-  border-radius: 99px;
-}
-
-// ─── Right ───────────────────────────────────────────────
 .right {
   flex: 1;
-  max-width: 580px;
+  display: flex;
+  justify-content: flex-end;
+  max-width: 600px;
   width: 100%;
 }
 
-// ─── Card ────────────────────────────────────────────────
-.card {
-  background: $white;
-  border-radius: 24px;
-  padding: 2rem 2rem 1.5rem;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+.stackWrapper {
   position: relative;
-  margin-bottom: 1.5rem;
+  width: 100%;
+  aspect-ratio: 16/10;
+  min-height: 280px;
+
+  @include respond-to(desktop) {
+    width: 90%;
+  }
 }
 
-// ─── Avatar ──────────────────────────────────────────────
+.frontCard,
+.backCard {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.02), 0px 64.8148px 46.8519px rgba(0, 0, 0, 0.0151852), 0px 38.5185px 25.4815px rgba(0, 0, 0, 0.0121481), 0px 20px 13px rgba(0, 0, 0, 0.01), 0px 8.14815px 6.51852px rgba(0, 0, 0, 0.00785185), 0px 1.85185px 3.14815px rgba(0, 0, 0, 0.00481481);
+
+  @include respond-to(tablet) {
+    padding: 2rem;
+  }
+}
+
+.frontCard {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  margin-left: auto;
+  transition: all 0.5s ease;
+
+  @include respond-to(desktop) {
+    margin-left: 0;
+  }
+}
+
+.backCard {
+  position: absolute;
+  z-index: 1;
+  top: 30px;
+  left: 10px;
+  width: 90%;
+  border: 2px solid #F7F7F7;
+  box-shadow: none;
+  opacity: 0.5;
+  transform: scale(0.95);
+
+  @include respond-to(tablet) {
+    top: 60px;
+    left: 60px;
+  }
+}
+
 .avatarWrapper {
   position: absolute;
-  top: -1.75rem;
-  left: 2rem;
-  width: 72px;
-  height: 72px;
+  top: -24px;
+  left: -12px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid white;
+
+  @include respond-to(tablet) {
+    top: -32px;
+    left: -32px;
+    width: 68px;
+    height: 68px;
+  }
 }
 
 .avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
   object-fit: cover;
-  border: 3px solid $white;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
-.ring {
-  position: absolute;
-  inset: -5px;
-  border-radius: 50%;
-  border: 2px dashed rgba($primary, 0.5);
-  animation: spinRing 12s linear infinite;
-}
-
-@keyframes spinRing {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-// ─── Quote Mark ──────────────────────────────────────────
-.quoteMark {
-  font-family: $font-heading;
-  font-size: 4rem;
-  color: $primary;
-  line-height: 1;
-  margin-top: 2.5rem;
-  margin-bottom: -0.5rem;
-  opacity: 0.6;
-}
-
-// ─── Quote Text ──────────────────────────────────────────
 .quoteText {
-  font-family: $font-body;
-  font-size: 0.95rem;
   color: $text-gray;
+  font-weight: 500;
   line-height: 1.8;
-  margin-bottom: 1.75rem;
-  animation: fadeIn 0.4s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-// ─── Reviewer List ───────────────────────────────────────
-.reviewerList {
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid rgba($text-gray, 0.12);
-}
-
-.reviewer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.85rem 0;
-  border-bottom: 1px solid rgba($text-gray, 0.12);
-  cursor: pointer;
-  transition: background 0.2s ease;
-  border-radius: 8px;
-  padding-left: 0.5rem;
-  padding-right: 0.25rem;
-
-  &:hover {
-    background: rgba($primary, 0.04);
-  }
-}
-
-.reviewerActive {
-  .reviewerName {
-    color: $primary;
-  }
-}
-
-.reviewerInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.reviewerName {
-  font-family: $font-body;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: $dark;
-  transition: color 0.2s ease;
-}
-
-.reviewerLocation {
-  font-family: $font-body;
-  font-size: 0.75rem;
-  color: $text-gray;
-}
-
-// ─── Toggle Button ───────────────────────────────────────
-.toggleBtn {
-  width: 28px;
-  height: 28px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: $text-gray;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: color 0.2s ease;
-
-  svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  .reviewer:hover & {
-    color: $primary;
-  }
-}
-
-// ─── Arrows ──────────────────────────────────────────────
-.arrows {
-  display: flex;
-  gap: 0.75rem;
-  justify-content: flex-end;
-}
-
-.arrow {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 2px solid rgba($text-gray, 0.25);
-  background: $white;
-  color: $text-gray;
   font-size: 1rem;
-  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.meta {
+  margin-top: auto;
+}
+
+.name {
+  color: $text-gray;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.location {
+  color: $text-gray;
+  font-size: 0.85rem;
+}
+
+.controls {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
+  flex-direction: column;
+  gap: 2rem;
+  z-index: 5;
 
-  &:hover {
-    border-color: $primary;
-    color: $primary;
-    box-shadow: 0 4px 12px rgba($primary, 0.25);
+  @include respond-to(tablet) {
+    right: -40px;
+  }
+
+  .arrowBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #BCB7C2;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #3E2E4D;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
   }
 }
 
-// ─── Decorative Elements ─────────────────────────────────
-.decorCircle {
+.bgDecor {
   position: absolute;
-  bottom: -80px;
-  left: -80px;
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  border: 40px solid rgba($primary, 0.06);
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background: radial-gradient(circle at 70% 30%, rgba($primary, 0.05) 0%, transparent 60%);
   pointer-events: none;
-
-  @include respond-to(desktop) {
-    bottom: -60px;
-    left: -60px;
-  }
-}
-
-.decorDot {
-  position: absolute;
-  top: 3rem;
-  right: 3rem;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: $accent-red;
-  opacity: 0.3;
-  pointer-events: none;
-
-  @include respond-to(desktop) {
-    width: 18px;
-    height: 18px;
-  }
 }

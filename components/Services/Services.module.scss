@@ -4,6 +4,23 @@
   width: 100%;
   padding: 5rem 0 6rem;
   background: $white;
+  position: relative;
+  overflow: hidden;
+}
+
+.plusGroup {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 153px;
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 // ─── Container ───────────────────────────────────────────
@@ -67,26 +84,33 @@
 }
 
 // ─── Card ────────────────────────────────────────────────
+.cardWrapper {
+  position: relative;
+  height: 100%;
+}
+
 .card {
   position: relative;
   padding: 2rem 1.5rem;
   border-radius: 20px;
   background: $white;
   text-align: left;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  overflow: hidden;
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 2; // Above blob
+  height: 100%;
 
   &:hover {
     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
     transform: translateY(-4px);
   }
 
-  // Featured card gets a subtle shadow by default
+  // Featured card gets a more prominent shadow like Figma
   &.featured {
-    box-shadow: 0 20px 60px #00000012;
+    box-shadow: 0 100px 80px rgba(0, 0, 0, 0.02), 0 41.7776px 33.4221px rgba(0, 0, 0, 0.0143771), 0 22.3363px 17.869px rgba(0, 0, 0, 0.0119221), 0 12.5216px 10.0172px rgba(0, 0, 0, 0.01), 0 6.6501px 5.32008px rgba(0, 0, 0, 0.00807786), 0 2.76726px 2.21381px rgba(0, 0, 0, 0.00562295);
+    border-radius: 36px;
   }
 }
 
@@ -100,6 +124,9 @@
   border-radius: 16px;
   margin-bottom: 1.25rem;
   transition: transform 0.3s ease;
+  background: #FFF1DA; // Light yellow from Figma
+  position: relative;
+  z-index: 2;
 
   .card:hover & {
     transform: scale(1.08) rotate(-3deg);
@@ -131,11 +158,12 @@
 // ─── Decorative Blob (Featured Card) ─────────────────────
 .blob {
   position: absolute;
-  bottom: -30px;
-  left: -20px;
+  bottom: -35px;
+  left: -35px;
   width: 100px;
   height: 100px;
   background: $accent-red;
-  border-radius: 20px 30px 40px 50px;
+  border-radius: 35px 0 10px 0; // Only top-left rounded as per Figma zoom
+  z-index: 1; // Under card (which is 2)
   pointer-events: none;
 }

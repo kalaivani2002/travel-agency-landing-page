@@ -19,7 +19,7 @@ const testimonials = [
       'Enjoyed the seamless booking experience. Every detail was taken care of and the trip exceeded all our expectations. Highly recommend!',
     name: 'Sara Ahmed',
     location: 'Dubai, UAE',
-    avatar: '/images/testimonials/sara.jpg',
+    avatar: '/images/testimonials/mike.jpg',
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const testimonials = [
       'An absolutely fantastic service. From choosing the destination to boarding the flight, everything was smooth and well-organised.',
     name: 'James Whitfield',
     location: 'London, UK',
-    avatar: '/images/testimonials/james.jpg',
+    avatar: '/images/testimonials/mike.jpg',
   },
 ];
 
@@ -48,14 +48,13 @@ export default function Testimonials() {
     <section className={styles.testimonials}>
       <div className={styles.container}>
 
-        {/* Left — Heading */}
+        {/* Left — Heading & Pagination Dots */}
         <div className={styles.left}>
           <p className={styles.tag}>TESTIMONIALS</p>
           <h2 className={styles.heading}>
             What People Say<br />About Us.
           </h2>
 
-          {/* Dots */}
           <div className={styles.dots}>
             {testimonials.map((_, i) => (
               <button
@@ -68,91 +67,72 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Right — Testimonial Card */}
+        {/* Right — Stacked Testimonial Cards */}
         <div className={styles.right}>
+          <div className={styles.stackWrapper}>
 
-          {/* Quote Card */}
-          <div className={styles.card}>
-
-            {/* Avatar */}
-            <div className={styles.avatarWrapper}>
-              <Image
-                src={current.avatar}
-                alt={current.name}
-                width={72}
-                height={72}
-                className={styles.avatar}
-              />
-              {/* Decorative ring */}
-              <span className={styles.ring} />
+            {/* Background Card */}
+            <div className={styles.backCard}>
+              <p className={styles.quoteText}>
+                {testimonials[(active + 1) % testimonials.length].quote}
+              </p>
+              <div className={styles.meta}>
+                <p className={styles.name}>{testimonials[(active + 1) % testimonials.length].name}</p>
+                <p className={styles.location}>{testimonials[(active + 1) % testimonials.length].location}</p>
+              </div>
             </div>
 
-            {/* Quote mark */}
-            <div className={styles.quoteMark}>&ldquo;</div>
+            {/* Foreground Card */}
+            <div className={styles.frontCard} key={active}>
+              <div className={styles.avatarWrapper}>
+                <Image
+                  src={current.avatar}
+                  alt={current.name}
+                  width={68}
+                  height={68}
+                  className={styles.avatar}
+                />
+              </div>
 
-            {/* Quote text */}
-            <p className={styles.quoteText} key={active}>
-              {current.quote}
-            </p>
+              <p className={styles.quoteText}>
+                &ldquo;{current.quote}&rdquo;
+              </p>
 
-            {/* Reviewer list */}
-            <div className={styles.reviewerList}>
-              {testimonials.map((t, i) => (
-                <div
-                  key={t.id}
-                  className={`${styles.reviewer} ${i === active ? styles.reviewerActive : ''}`}
-                  onClick={() => setActive(i)}
-                >
-                  <div className={styles.reviewerInfo}>
-                    <p className={styles.reviewerName}>{t.name}</p>
-                    <p className={styles.reviewerLocation}>{t.location}</p>
-                  </div>
-                  {/* Expand / Collapse icon */}
-                  <button
-                    className={styles.toggleBtn}
-                    aria-label={i === active ? 'Collapse' : 'Expand'}
-                  >
-                    {i === active ? (
-                      <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M5 15l7-7 7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    ) : (
-                      <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M19 9l-7 7-7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    )}
-                  </button>
-                </div>
-              ))}
+              <div className={styles.meta}>
+                <p className={styles.name}>{current.name}</p>
+                <p className={styles.location}>{current.location}</p>
+              </div>
+            </div>
+
+            {/* Vertical Controls (Prev/Next) */}
+            <div className={styles.controls}>
+              <button
+                className={styles.arrowBtn}
+                onClick={handlePrev}
+                aria-label="Previous testimonial"
+              >
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 15L12 9L6 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              <button
+                className={styles.arrowBtn}
+                onClick={handleNext}
+                aria-label="Next testimonial"
+              >
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
             </div>
 
           </div>
-
-          {/* Navigation Arrows */}
-          <div className={styles.arrows}>
-            <button
-              className={styles.arrow}
-              onClick={handlePrev}
-              aria-label="Previous testimonial"
-            >
-              &#8592;
-            </button>
-            <button
-              className={styles.arrow}
-              onClick={handleNext}
-              aria-label="Next testimonial"
-            >
-              &#8594;
-            </button>
-          </div>
-
         </div>
+
       </div>
 
-      {/* Decorative elements */}
-      <div className={styles.decorCircle} />
-      <div className={styles.decorDot} />
-
+      {/* Background decoration */}
+      <div className={styles.bgDecor} />
     </section>
   );
 }

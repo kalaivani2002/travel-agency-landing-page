@@ -14,7 +14,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link href="/" className={styles.logo}>
-         <img src="/images/Logo.svg" alt="Trip to Greece" className={styles.tripImage} />
+          <img src="/images/Logo.svg" alt="Jadoo Logo" className={styles.logoImg} />
         </Link>
 
         {/* Hamburger - mobile only */}
@@ -38,8 +38,8 @@ export default function Navbar() {
 
         {/* Right Side */}
         <div className={`${styles.navActions} ${menuOpen ? styles.open : ''}`}>
-          <Link href="/login" className={styles.loginBtn}>Login</Link>
-          <Link href="/signup" className={styles.signupBtn}>Sign up</Link>
+          <Link href="#" className={styles.loginBtn}>Login</Link>
+          <Link href="#" className={styles.signupBtn}>Sign up</Link>
           <button className={styles.langBtn}>
             EN <span className={styles.chevron}></span>
           </button>

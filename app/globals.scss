@@ -33,18 +33,25 @@ h1, h2, h3 {
 }
 
 .main-section {
- 
+  position: relative;
+  overflow: hidden;
 }
 
-.background-color-main{
- position: relative;
- }
-
- .background-color-main img{
+.background-color-main {
   position: absolute;
   top: 0;
   right: 0;
+  width: 100%;
+  height: 0;
   z-index: 0;
-  width: 650px;
-  height: 650px;
+}
+
+ .background-color-main img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  width: auto;
+  height: clamp(600px, 80vh, 900px);
+  pointer-events: none;
  }

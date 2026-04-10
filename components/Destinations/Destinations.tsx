@@ -7,21 +7,21 @@ import styles from './Destinations.module.scss';
 const destinations = [
   {
     id: 1,
-    image: '/images/destinations/rome.jpg',
+    image: '/images/destinations/rome-1.jpg',
     name: 'Rome, Italy',
     price: '$5,42k',
     days: '10 Days Trip',
   },
   {
     id: 2,
-    image: '/images/destinations/london.jpg',
+    image: '/images/destinations/london-1.jpg',
     name: 'London, UK',
     price: '$4.2k',
     days: '12 Days Trip',
   },
   {
     id: 3,
-    image: '/images/destinations/europe.jpg',
+    image: '/images/destinations/europe-1.jpg',
     name: 'Full Europe',
     price: '$15k',
     days: '28 Days Trip',
@@ -53,7 +53,7 @@ export default function Destinations() {
   const slidePercent = 100 / visibleCount;
 
   return (
-    <section className={styles.destinations}>
+    <section id="destinations" className={styles.destinations}>
       <div className={styles.container}>
 
         {/* Section Header */}
@@ -106,16 +106,16 @@ export default function Destinations() {
                       </div>
                       <div className={styles.cardRow}>
                         <span className={styles.destDays}>
-                          {/* Plane icon */}
+                          {/* Navigation Paper Plane Icon */}
                           <svg
                             className={styles.planeIcon}
-                            viewBox="0 0 24 24"
+                            viewBox="0 0 16 16"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M3 17l7-4 1 4 3-7 7-1-4 3 4 1-7 1-1 4-4-3-6 2z"
-                              fill="#F1A501"
+                              d="M15.1764 0.28312C14.9961 0.102808 14.7354 0.0382346 14.4927 0.114704L0.640161 4.54284C0.40243 4.61868 0.222119 4.81067 0.165622 5.0484C0.109125 5.28613 0.187397 5.53232 0.375685 5.70014L5.6133 10.3867L10.2999 15.6243C10.4677 15.8126 10.7139 15.8909 10.9516 15.8344C11.1893 15.7779 11.3813 15.5976 11.4571 15.3598L15.8853 1.50728C15.9618 1.26456 15.8972 1.00392 15.7169 0.823608L15.1764 0.28312Z"
+                              fill="black"
                             />
                           </svg>
                           {dest.days}
@@ -157,15 +157,16 @@ export default function Destinations() {
           </div>
         )}
 
+        {/* Decorative Decore.svg right side */}
+        <div className={styles.decore}>
+          <Image
+            src="/images/destinations/Decore-1.svg"
+            alt="Decorative spiral"
+            width={96}
+            height={252}
+          />
+        </div>
       </div>
-
-      {/* Decorative dashes right side */}
-      <div className={styles.decorDashes}>
-        {[...Array(5)].map((_, i) => (
-          <span key={i} className={styles.dash} />
-        ))}
-      </div>
-
     </section>
   );
 }

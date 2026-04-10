@@ -12,9 +12,7 @@ export default function Hero() {
           <p className={styles.tag}>Best Destinations around the world</p>
 
           <h1 className={styles.heading}>
-            Travel, <span className='enjoy-class'>enjoy</span><br />
-            and live a new<br />
-            and full life
+            Travel, <span className={styles.enjoy}>enjoy</span>and live a new and full life
           </h1>
 
           <p className={styles.description}>
@@ -42,32 +40,30 @@ export default function Hero() {
 
         {/* Right — Hero Image */}
         <div className={styles.imageWrapper}>
-          {/* Decorative background blob */}
-          {/* <div className={styles.blob} /> */}
-
           {/* Decorative plane icons */}
           <div className={`${styles.plane} ${styles.planeTop}`}>
             <Image
-            src="/images/plane-1.svg"
-            alt="Plane"
-            width={120}
-            height={80}
-          />
+              src="/images/plane-1.svg"
+              alt="Plane"
+              width={120}
+              height={80}
+            />
           </div>
           <div className={`${styles.plane} ${styles.planeBottom}`}>
-           <Image
-            src="/images/plane-2.svg"
-            alt="Plane"
-            width={120}
-            height={80}
-          />
+            <Image
+              src="/images/plane-2.svg"
+              alt="Plane"
+              width={120}
+              height={80}
+            />
           </div>
 
           <Image
             src="/images/Hero-traveller.svg"
             alt="Happy traveler with backpack"
-            width={500}
-            height={600}
+            width={765}
+            height={764}
+            className={styles.heroImage}
             priority
           />
 

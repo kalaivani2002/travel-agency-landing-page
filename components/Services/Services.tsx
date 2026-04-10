@@ -31,7 +31,12 @@ const services = [
 
 export default function Services() {
   return (
-    <section className={styles.services}>
+    <section id="flights" className={styles.services}>
+      {/* Decorative Plus Pattern */}
+      <div className={styles.plusGroup}>
+        <img src="/images/plus-group-img.webp" alt="decorative pattern" />
+      </div>
+
       <div className={styles.container}>
 
         {/* Section Header */}
@@ -43,27 +48,28 @@ export default function Services() {
         {/* Cards Grid */}
         <div className={styles.grid}>
           {services.map((service) => (
-            <div
-              key={service.id}
-              className={`${styles.card} ${service.featured ? styles.featured : ''}`}
-            >
-              {/* Icon Box */}
+            <div key={service.id} className={styles.cardWrapper}>
               <div
-                className={styles.iconBox}
+                className={`${styles.card} ${service.featured ? styles.featured : ''}`}
               >
-                <img
-                  src={service.icon}
-                  alt={service.title}
-                  className={styles.icon}
-                  width={85}
-                  height={85}
-                />
+                {/* Icon Box */}
+                <div
+                  className={styles.iconBox}
+                >
+                  <img
+                    src={service.icon}
+                    alt={service.title}
+                    className={styles.icon}
+                    width={85}
+                    height={85}
+                  />
+                </div>
+
+                <h3 className={styles.cardTitle}>{service.title}</h3>
+                <p className={styles.cardDesc}>{service.description}</p>
               </div>
 
-              <h3 className={styles.cardTitle}>{service.title}</h3>
-              <p className={styles.cardDesc}>{service.description}</p>
-
-              {/* Decorative blob on featured card */}
+              {/* Decorative blob on featured card (sibling to card) */}
               {service.featured && <span className={styles.blob} />}
             </div>
           ))}

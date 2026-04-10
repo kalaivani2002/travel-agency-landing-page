@@ -31,7 +31,7 @@ const steps = [
 
 export default function BookingSteps() {
   return (
-    <section className={styles.booking}>
+    <section id="bookings" className={styles.booking}>
       <div className={styles.container}>
 
         {/* Left — Steps */}
