@@ -1,0 +1,248 @@
+@use "../../styles/variables" as *;
+
+.footer {
+  width: 100%;
+  background: $white;
+  padding-top: 4rem;
+}
+
+// ─── Container ───────────────────────────────────────────
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+
+  @include respond-to(mobile) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(tablet) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond-to(desktop) {
+    grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  @include respond-to(fullhd) {
+    max-width: 1600px;
+    padding: 0 2rem 4rem;
+    gap: 3rem;
+  }
+}
+
+// ─── Brand Column ─────────────────────────────────────────
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @include respond-to(mobile) {
+    grid-column: 1 / -1;
+  }
+
+  @include respond-to(desktop) {
+    grid-column: auto;
+  }
+}
+
+// .logo {
+//   font-family: $font-heading;
+//   font-size: 1.75rem;
+//   font-weight: 700;
+//   color: $dark;
+//   text-decoration: none;
+//   letter-spacing: -0.5px;
+// }
+
+.logoAccent {
+  color: $primary;
+}
+
+.brandDesc {
+  font-family: $font-body;
+  font-size: 0.875rem;
+  color: $text-gray;
+  line-height: 1.7;
+  max-width: 220px;
+  font-weight: 500;
+}
+
+// ─── Social Icons ─────────────────────────────────────────
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.socialIcon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: $white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  flex-shrink: 0;
+
+  // Keep image contained inside circle
+  img {
+    width: 18px !important;
+    height: 18px !important;
+    object-fit: contain;
+    border-radius: 0;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
+a:global(#instagram) {
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%,
+  );
+}
+
+// ─── Link Group ──────────────────────────────────────────
+.linkGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.badgeandicons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.groupHeading {
+  font-family: $font-body;
+  font-size: 1rem;
+  font-weight: 700;
+  color: $dark;
+  letter-spacing: 0.01em;
+}
+
+.groupHeading2 {
+  font-family: $font-body;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: $text-gray;
+  letter-spacing: 0.01em;
+}
+
+.linkList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.link {
+  font-family: $font-body;
+  font-size: 0.875rem;
+  color: $text-gray;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    padding-left 0.2s ease;
+  display: inline-block;
+  font-weight: 500;
+
+  &:hover {
+    color: $primary;
+    padding-left: 4px;
+  }
+}
+
+// ─── App Column ──────────────────────────────────────────
+.appCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  @include respond-to(mobile) {
+    grid-column: 1 / -1;
+  }
+
+  @include respond-to(tablet) {
+    grid-column: auto;
+  }
+}
+
+// ─── App Badges ──────────────────────────────────────────
+.appBadges {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.appBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition:
+    background 0.25s ease,
+    transform 0.2s ease;
+  max-width: 180px;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.appBadgeText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.appBadgeSub {
+  font-family: $font-body;
+  font-size: 0.65rem;
+  color: rgba($white, 0.75);
+  line-height: 1;
+}
+
+.appBadgeMain {
+  font-family: $font-body;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: $white;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+// ─── Bottom Bar ──────────────────────────────────────────
+.bottomBar {
+  border-top: 1px solid rgba($text-gray, 0.1);
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+
+  @include respond-to(fullhd) {
+    padding: 1.5rem 2rem;
+  }
+}
+
+.copyright {
+  font-family: $font-body;
+  font-size: 0.8rem;
+  color: $text-gray;
+  font-weight: 500;
+}

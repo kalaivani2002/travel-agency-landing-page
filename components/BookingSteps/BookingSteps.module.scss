@@ -1,0 +1,300 @@
+@use '../../styles/variables' as *;
+
+.booking {
+  width: 100%;
+  padding: 5rem 0 6rem;
+  background: $white;
+}
+
+// ─── Container ───────────────────────────────────────────
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: center;
+
+  @include respond-to(desktop) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5rem;
+  }
+
+  @include respond-to(fullhd) {
+    max-width: 1600px;
+    padding: 0 2rem;
+  }
+}
+
+// ─── Left Side ───────────────────────────────────────────
+.left {
+  flex: 1;
+  max-width: 480px;
+  width: 100%;
+
+  @include respond-to(desktop) {
+    max-width: 440px;
+  }
+}
+
+.tag {
+  font-family: $font-body;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: $accent-red;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+
+.heading {
+  font-family: $font-heading;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: $dark;
+  line-height: 1.25;
+  margin-bottom: 2.5rem;
+
+  @include respond-to(fullhd) {
+    font-size: 3rem;
+  }
+}
+
+// ─── Steps ───────────────────────────────────────────────
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+// ─── Number Badge ────────────────────────────────────────
+.badge {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-body;
+  font-size: 1rem;
+  font-weight: 700;
+  color: $white;
+  transition: transform 0.3s ease;
+
+  .step:hover & {
+    transform: scale(1.08) rotate(-4deg);
+  }
+}
+
+// ─── Step Text ───────────────────────────────────────────
+.stepContent {
+  flex: 1;
+  padding-top: 0.25rem;
+}
+
+.stepTitle {
+  font-family: $font-body;
+  font-size: 1rem;
+  font-weight: 600;
+  color: $dark;
+  margin-bottom: 0.4rem;
+}
+
+.stepDesc {
+  font-family: $font-body;
+  font-size: 0.875rem;
+  color: $text-gray;
+  line-height: 1.7;
+}
+
+// ─── Right Side ──────────────────────────────────────────
+.right {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include respond-to(desktop) {
+    max-width: 460px;
+    min-height: 480px;
+  }
+
+  @include respond-to(fullhd) {
+    max-width: 520px;
+    min-height: 540px;
+  }
+}
+
+// ─── Decorative Background Box ───────────────────────────
+.bgBox {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 85%;
+  height: 92%;
+  background: #EEF6FF;
+  border-radius: 24px;
+  z-index: 0;
+}
+
+// ─── Main Image Card ─────────────────────────────────────
+.imageCard {
+  position: relative;
+  z-index: 2;
+  width: 75%;
+  height: 340px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  margin-left: auto;
+  margin-right: 2rem;
+
+  @include respond-to(tablet) {
+    height: 380px;
+  }
+
+  @include respond-to(fullhd) {
+    height: 440px;
+  }
+}
+
+.tripImage {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+
+  .imageCard:hover & {
+    transform: scale(1.04);
+  }
+}
+
+// ─── Overlay Info Bar ────────────────────────────────────
+.imageOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.overlayLeft {
+  flex: 1;
+}
+
+.overlayTitle {
+  font-family: $font-body;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: $white;
+  margin-bottom: 0.2rem;
+}
+
+.overlayDate {
+  font-family: $font-body;
+  font-size: 0.72rem;
+  color: rgba($white, 0.8);
+}
+
+.overlayRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+
+// ─── Avatar Group ────────────────────────────────────────
+.avatarGroup {
+  display: flex;
+
+  .avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2px solid $white;
+    background: linear-gradient(135deg, $primary, $accent-red);
+    margin-left: -8px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.goingCount {
+  font-family: $font-body;
+  font-size: 0.68rem;
+  color: rgba($white, 0.85);
+}
+
+// ─── Floating Mini Card ──────────────────────────────────
+.floatCard {
+  position: absolute;
+  top: 8%;
+  left: 0;
+  z-index: 4;
+  background: $white;
+  border-radius: 16px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12);
+  min-width: 160px;
+  animation: floatCard 5s ease-in-out infinite;
+
+  @include respond-to(tablet) {
+    min-width: 180px;
+    top: 10%;
+    left: -1rem;
+  }
+}
+
+.floatIcon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.floatTitle {
+  font-family: $font-body;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: $dark;
+  margin-bottom: 0.15rem;
+  text-transform: capitalize;
+}
+
+.floatSub {
+  font-family: $font-body;
+  font-size: 0.7rem;
+  color: $text-gray;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}

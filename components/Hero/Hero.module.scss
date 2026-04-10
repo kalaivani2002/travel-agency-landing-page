@@ -1,0 +1,346 @@
+@use '../../styles/variables' as *;
+
+.hero {
+  width: 100%;
+  overflow: hidden;
+  padding: 3rem 0 4rem;
+
+  @include respond-to(tablet) {
+    padding: 4rem 0 5rem;
+  }
+
+  @include respond-to(fullhd) {
+    padding: 6rem 0 7rem;
+  }
+}
+
+// ─── Container ──────────────────────────────────────────
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+
+  @include respond-to(desktop) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  @include respond-to(fullhd) {
+    max-width: 1600px;
+    padding: 0 2rem;
+  }
+}
+
+// ─── Left Content ────────────────────────────────────────
+.content {
+  flex: 1;
+  max-width: 520px;
+  text-align: center;
+
+  @include respond-to(desktop) {
+    text-align: left;
+  }
+}
+
+.tag {
+  font-family: $font-body;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $accent-red;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.heading {
+  font-family: $font-heading;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 700;
+  color: $dark;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+
+  // Underline accent on "Travel, enjoy"
+  & > :first-line {
+    text-decoration: underline;
+    text-decoration-color: $accent-red;
+    text-underline-offset: 6px;
+  }
+
+  @include respond-to(fullhd) {
+    font-size: 4.25rem;
+  }
+}
+
+.description {
+  font-family: $font-body;
+  font-size: 1rem;
+  color: $text-gray;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  max-width: 420px;
+
+  @include respond-to(desktop) {
+    margin-left: 0;
+  }
+
+  // margin-left: auto;
+  // margin-right: auto;
+}
+
+.enjoy-class {
+
+}
+
+// ─── CTA Buttons ─────────────────────────────────────────
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: center;
+
+  @include respond-to(desktop) {
+    justify-content: flex-start;
+  }
+}
+
+.btnPrimary {
+  font-family: $font-body;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: $white;
+  background: $primary;
+  border: none;
+  border-radius: 10px;
+  padding: 0.85rem 2rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+  box-shadow: 0 8px 24px rgba($primary, 0.4);
+
+  &:hover {
+    background: darken($primary, 8%);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btnPlay {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: $font-body;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: $text-gray;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $dark;
+  }
+}
+
+.playIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  box-shadow: 0 6px 20px rgba($accent-red, 0.35);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+
+  svg {
+    width: 52px;
+    height: 52px;
+  }
+
+  .btnPlay:hover & {
+    transform: scale(1.08);
+  }
+}
+
+// ─── Right Image Area ────────────────────────────────────
+.imageWrapper {
+  flex: 1;
+  position: relative;
+  // display: flex;
+  // justify-content: center;
+  // align-items: flex-end;
+  // min-height: 420px;
+
+  @include respond-to(tablet) {
+    min-height: 520px;
+  }
+
+  @include respond-to(desktop) {
+    min-height: 600px;
+  }
+}
+
+// ─── Decorative Blob ─────────────────────────────────────
+.blob {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 85%;
+  height: 95%;
+  background: #FFF1DA;
+  border-radius: 50% 40% 60% 30% / 40% 50% 60% 50%;
+  z-index: 0;
+
+  @include respond-to(desktop) {
+    width: 78%;
+    right: -1rem;
+  }
+}
+
+// ─── Hero Image ──────────────────────────────────────────
+.heroImage {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.12));
+
+  @include respond-to(tablet) {
+    max-width: 480px;
+  }
+
+  @include respond-to(fullhd) {
+    max-width: 560px;
+  }
+}
+
+// ─── Decorative Planes ───────────────────────────────────
+.plane {
+  position: absolute;
+  z-index: 3;
+
+  svg {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+  }
+}
+
+.planeTop {
+  top: 8%;
+  left: 5%;
+  animation: floatPlane 4s ease-in-out infinite;
+}
+
+.planeBottom {
+  top: 18%;
+  right: 2%;
+  animation: floatPlane 4s ease-in-out infinite 1.5s;
+}
+
+@keyframes floatPlane {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-10px) rotate(3deg); }
+}
+
+// ─── Floating Trip Card ──────────────────────────────────
+.tripCard {
+  position: absolute;
+  bottom: 6%;
+  left: 0;
+  z-index: 4;
+  background: $white;
+  border-radius: 20px;
+  padding: 1rem 1.25rem;
+  width: 220px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  animation: floatCard 5s ease-in-out infinite;
+
+  @include respond-to(tablet) {
+    width: 240px;
+    left: -1rem;
+  }
+
+  @include respond-to(desktop) {
+    left: 0;
+    bottom: 8%;
+  }
+}
+
+.tripCardInner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.tripThumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.tripInfo {
+  flex: 1;
+}
+
+.tripTitle {
+  font-family: $font-body;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: $dark;
+  margin-bottom: 0.2rem;
+}
+
+.tripDate {
+  font-family: $font-body;
+  font-size: 0.72rem;
+  color: $text-gray;
+}
+
+.tripProgress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.progressBar {
+  width: 100%;
+  height: 5px;
+  background: #F5F5F5;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progressFill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, $primary, $accent-red);
+  border-radius: 99px;
+}
+
+.progressLabel {
+  font-family: $font-body;
+  font-size: 0.7rem;
+  color: $text-gray;
+  text-align: right;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}

@@ -1,0 +1,50 @@
+@use '../styles/variables' as *;
+
+@import "tailwindcss";
+
+
+
+:root {
+  --background: #{$white};
+  --foreground: #{$dark};
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, h4 {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: $font-body;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: $font-heading;
+  color: $dark;
+}
+
+.main-section {
+ 
+}
+
+.background-color-main{
+ position: relative;
+ }
+
+ .background-color-main img{
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
+  width: 650px;
+  height: 650px;
+ }

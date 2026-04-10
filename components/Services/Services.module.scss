@@ -1,0 +1,141 @@
+@use '../../styles/variables' as *;
+
+.services {
+  width: 100%;
+  padding: 5rem 0 6rem;
+  background: $white;
+}
+
+// ─── Container ───────────────────────────────────────────
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+
+  @include respond-to(fullhd) {
+    max-width: 1600px;
+    padding: 0 2rem;
+  }
+}
+
+// ─── Section Header ──────────────────────────────────────
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.tag {
+  font-family: $font-body;
+  font-size: 1rem;
+  font-weight: 600;
+  color: $text-gray;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.heading {
+  font-family: $font-heading;
+  font-size: clamp(1.75rem, 3vw, 3.5rem);
+  font-weight: 700;
+  color: $dark;
+  line-height: 1.2;
+
+  @include respond-to(fullhd) {
+    font-size: 3rem;
+  }
+}
+
+// ─── Grid ────────────────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @include respond-to(mobile) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(desktop) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5rem;
+  }
+
+  @include respond-to(fullhd) {
+    gap: 3rem;
+  }
+}
+
+// ─── Card ────────────────────────────────────────────────
+.card {
+  position: relative;
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  background: $white;
+  text-align: left;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &:hover {
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+  }
+
+  // Featured card gets a subtle shadow by default
+  &.featured {
+    box-shadow: 0 20px 60px #00000012;
+  }
+}
+
+// ─── Icon Box ────────────────────────────────────────────
+.iconBox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 85px;
+  height: 85px;
+  border-radius: 16px;
+  margin-bottom: 1.25rem;
+  transition: transform 0.3s ease;
+
+  .card:hover & {
+    transform: scale(1.08) rotate(-3deg);
+  }
+}
+
+.icon {
+  object-fit: contain;
+}
+
+// ─── Card Text ───────────────────────────────────────────
+.cardTitle {
+  font-family: $font-body;
+  font-size: 1.20rem;
+  font-weight: 600;
+  color: #1E1D4C;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.cardDesc {
+  font-family: $font-body;
+  font-size: 0.875rem;
+  color: $text-gray;
+  line-height: 1.75;
+  text-align: center;
+}
+
+// ─── Decorative Blob (Featured Card) ─────────────────────
+.blob {
+  position: absolute;
+  bottom: -30px;
+  left: -20px;
+  width: 100px;
+  height: 100px;
+  background: $accent-red;
+  border-radius: 20px 30px 40px 50px;
+  pointer-events: none;
+}

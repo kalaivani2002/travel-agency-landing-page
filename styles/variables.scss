@@ -1,0 +1,37 @@
+// styles/_variables.scss
+
+// Colors
+$primary:     #F1A501;   // orange
+$dark:        #14183E;   // navy headings
+$text-gray:   #5E6282;   // body text
+$accent-red:  #DF6951;   // underline/accent
+$bg-light:    #F8F8F8;
+$white:       #ffffff;
+$list-black:  #212832;
+$form-bg:     rgba(223, 215, 249, 1);
+
+// Fonts
+$font-heading: var(--font-volkhov), serif;
+$font-body:    var(--font-poppins), sans-serif;
+
+// Breakpoints
+$mobile:    576px;
+$tablet:    768px;
+$desktop:   1024px;
+$wide:      1280px;
+$fullhd:    1920px;
+
+// Mixins
+@mixin respond-to($bp) {
+  @if $bp == mobile {
+    @media (min-width: $mobile)  { @content; }
+  } @else if $bp == tablet {
+    @media (min-width: $tablet)  { @content; }
+  } @else if $bp == desktop {
+    @media (min-width: $desktop) { @content; }
+  } @else if $bp == wide {
+    @media (min-width: $wide)    { @content; }
+  } @else if $bp == fullhd {
+    @media (min-width: $fullhd)  { @content; }
+  }
+}
