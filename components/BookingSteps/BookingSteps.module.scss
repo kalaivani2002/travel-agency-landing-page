@@ -146,14 +146,14 @@
 // ─── Decorative Background Box ───────────────────────────
 .bgBox {
   position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 80%;
-  height: 90%;
-  // background: #EEF6FF;
-  border-radius: 28px;
+  top: 10%;
+  right: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle at center, rgba(89, 177, 230, 0.4) 0%, transparent 70%);
+  filter: blur(40px);
   z-index: 0;
+  pointer-events: none;
 }
 
 // ─── White Outer Trip Card ───────────────────────────────
