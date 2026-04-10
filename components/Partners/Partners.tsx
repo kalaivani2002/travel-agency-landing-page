@@ -31,43 +31,16 @@ const partners = [
 export default function Partners() {
   return (
     <section className={styles.partners}>
-      <div className={styles.track}>
-        <div className={styles.inner}>
-
-          {/* First set */}
-          {partners.map((partner) => (
-            <div key={`a-${partner.id}`} className={styles.logoItem}>
-              <img
-                src={partner.logo}
-                alt={partner.name}
-                className={styles.logo}
-              />
-            </div>
-          ))}
-
-          {/* Duplicate for seamless loop */}
-          {partners.map((partner) => (
-            <div key={`b-${partner.id}`} className={styles.logoItem} aria-hidden="true">
-              <img
-                src={partner.logo}
-                alt={partner.name}
-                className={styles.logo}
-              />
-            </div>
-          ))}
-
-          {/* Third copy — ensures no gap on wide screens */}
-          {partners.map((partner) => (
-            <div key={`c-${partner.id}`} className={styles.logoItem} aria-hidden="true">
-              <img
-                src={partner.logo}
-                alt={partner.name}
-                className={styles.logo}
-              />
-            </div>
-          ))}
-
-        </div>
+      <div className={styles.inner}>
+        {partners.map((partner) => (
+          <div key={partner.id} className={styles.logoItem}>
+            <img
+              src={partner.logo}
+              alt={partner.name}
+              className={styles.logo}
+            />
+          </div>
+        ))}
       </div>
     </section>
   );
