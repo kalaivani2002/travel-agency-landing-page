@@ -64,32 +64,33 @@
 
 .cardsInner {
   display: flex;
-  gap: 1.5rem;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-  @include respond-to(fullhd) {
-    gap: 2rem;
+// ─── Card ────────────────────────────────────────────
+.card {
+  flex: 0 0 100%;
+  padding: 0 0.75rem;
+  background: transparent; // card bg goes on inner el
+  box-sizing: border-box;
+  cursor: pointer;
+
+  @include respond-to(tablet) {
+    flex: 0 0 50%;
+  }
+
+  @include respond-to(desktop) {
+    flex: 0 0 33.333%;
   }
 }
 
-// ─── Card ────────────────────────────────────────────────
-.card {
-  // Show 1 on mobile, 2 on tablet, 3 on desktop
-  flex: 0 0 calc(100% - 1.5rem);
+// Inner card wrapper for shadow + hover
+.cardInner {
   background: $white;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-
-  @include respond-to(tablet) {
-    flex: 0 0 calc(50% - 1rem);
-  }
-
-  @include respond-to(desktop) {
-    flex: 0 0 calc(33.333% - 1rem);
-  }
 
   &:hover {
     transform: translateY(-6px);
@@ -117,7 +118,7 @@
   object-fit: cover;
   transition: transform 0.5s ease;
 
-  .card:hover & {
+  .cardInner:hover & {
     transform: scale(1.06);
   }
 }
@@ -164,7 +165,7 @@
   height: 16px;
 }
 
-// ─── Arrows ──────────────────────────────────────────────
+// ─── Arrows ────────────────────────────────────────────
 .arrow {
   display: none;
   width: 44px;
@@ -173,12 +174,17 @@
   border: 2px solid rgba($text-gray, 0.25);
   background: $white;
   color: $text-gray;
-  font-size: 1.1rem;
   cursor: pointer;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  padding: 0;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
 
   @include respond-to(tablet) {
     display: flex;
@@ -196,7 +202,7 @@
   }
 }
 
-// ─── Dots ────────────────────────────────────────────────
+// ─── Dots ────────────────────────────────────────────
 .dots {
   display: flex;
   justify-content: center;
